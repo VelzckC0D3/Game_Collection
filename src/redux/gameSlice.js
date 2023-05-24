@@ -1,24 +1,26 @@
-import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { createSlice } from '@reduxjs/toolkit';
+
+const initialState = {
+  games: [],
+  isLoading: false,
+  error: null,
+};
 
 const gameSlice = createSlice({
   name: 'game',
-  initialState: {
-    games: [],
-    loading: false,
-    error: null,
-  },
+  initialState,
   reducers: {
-    fetchGamesStart(state) {
-      state.loading = true;
+    fetchGamesStart: (state) => {
+      state.isLoading = true;
       state.error = null;
     },
-    fetchGamesSuccess(state, action) {
-      state.loading = false;
+    fetchGamesSuccess: (state, action) => {
+      state.isLoading = false;
       state.games = action.payload;
     },
-    fetchGamesFailure(state, action) {
-      state.loading = false;
+    fetchGamesFailure: (state, action) => {
+      state.isLoading = false;
       state.error = action.payload;
     },
   },
@@ -26,14 +28,27 @@ const gameSlice = createSlice({
 
 export const { fetchGamesStart, fetchGamesSuccess, fetchGamesFailure } = gameSlice.actions;
 
-export const fetchGames = () => async (dispatch) => {
+export default gameSlice.reducer;
+
+// API fetch function
+export const fetchGames = (category) => async (dispatch) => {
+  dispatch(fetchGamesStart());
   try {
-    dispatch(fetchGamesStart());
-    const response = await axios.get('https://www.freetogame.com/api/games');
+    const options = {
+      method: 'GET',
+      url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
+      params: {
+        category, // Use the dynamic category value
+      },
+      headers: {
+        'X-RapidAPI-Key': '813398e5bcmsh991821b7dd7c8acp1c46c0jsn08219d1a1e17',
+        'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com',
+      },
+    };
+
+    const response = await axios.request(options);
     dispatch(fetchGamesSuccess(response.data));
   } catch (error) {
     dispatch(fetchGamesFailure(error.message));
   }
 };
-
-export default gameSlice.reducer;
