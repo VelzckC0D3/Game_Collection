@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
-import FilteredGames from './components/FilteredGames';
+import FilteredGames from './components/GameList';
 
 const App = () => (
   <Router>

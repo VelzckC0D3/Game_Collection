@@ -5,6 +5,7 @@ const initialState = {
   games: [],
   isLoading: false,
   error: null,
+  selectedCategory: '',
 };
 
 const gameSlice = createSlice({
@@ -23,10 +24,18 @@ const gameSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    setCategory: (state, action) => {
+      state.selectedCategory = action.payload;
+    },
+    clearCategory: (state) => {
+      state.selectedCategory = '';
+    },
   },
 });
 
-export const { fetchGamesStart, fetchGamesSuccess, fetchGamesFailure } = gameSlice.actions;
+export const {
+  fetchGamesStart, fetchGamesSuccess, fetchGamesFailure, setCategory, clearCategory,
+} = gameSlice.actions;
 
 export default gameSlice.reducer;
 

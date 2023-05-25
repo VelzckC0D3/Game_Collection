@@ -1,42 +1,56 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchGames } from '../redux/gameSlice';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { fetchGames, setCategory, clearCategory } from '../redux/gameSlice';
+import Header from './Header';
+import Categories from './Categories';
+import GameList from './GameList';
 
 const Home = () => {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.game.games);
-  const loading = useSelector((state) => state.game.loading);
+  const loading = useSelector((state) => state.game.isLoading);
   const error = useSelector((state) => state.game.error);
-  const selectedCategory = localStorage.getItem('selectedCategory');
-
-  const [hideHeading, setHideHeading] = useState(false);
-  const [hideButtons, setHideButtons] = useState(false);
-  const [categoryName, setCategoryName] = useState('');
+  const selectedCategory = useSelector((state) => state.game.selectedCategory);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleCategoryChange = (category) => {
-    dispatch(fetchGames(category));
-    localStorage.setItem('selectedCategory', category);
-    setHideHeading(true);
-    setHideButtons(true);
-    setCategoryName(category);
+    dispatch(setCategory(category));
+    setTimeout(() => {
+      navigate(`/${category}`);
+    }, 300);
   };
 
   const handleGoBack = () => {
-    localStorage.removeItem('selectedCategory');
-    setHideHeading(false);
-    setHideButtons(false);
-    setCategoryName('');
+    dispatch(clearCategory());
+    navigate('/');
   };
+
+  useEffect(() => {
+    if (location.pathname === '/') {
+      dispatch(clearCategory());
+      localStorage.removeItem('selectedCategory');
+    } else {
+      const categoryFromPath = location.pathname.substring(1);
+      if (categoryFromPath) {
+        dispatch(setCategory(categoryFromPath));
+        localStorage.setItem('selectedCategory', categoryFromPath);
+      } else {
+        dispatch(clearCategory());
+        localStorage.removeItem('selectedCategory');
+      }
+    }
+  }, [location.pathname, dispatch]);
 
   useEffect(() => {
     if (selectedCategory) {
       dispatch(fetchGames(selectedCategory));
-      setCategoryName(selectedCategory);
+      localStorage.setItem('selectedCategory', selectedCategory);
     } else {
       dispatch(fetchGames());
-      setCategoryName('');
     }
-  }, [dispatch, selectedCategory]);
+  }, [selectedCategory, dispatch]);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -52,46 +66,14 @@ const Home = () => {
     );
   }
 
-  const filteredCategories = ['shooter', 'strategy', 'fighting', 'mmorpg', 'sports', 'racing'];
-
   return (
     <>
-      {!hideHeading && <h1>Games</h1>}
-      {!hideButtons && (
-        <div>
-          {filteredCategories.map((category) => (
-            <div key={category} className="category-button">
-              <button type="button" onClick={() => handleCategoryChange(category)}>{category}</button>
-            </div>
-          ))}
-        </div>
-      )}
-      {hideButtons && (
-        <div>
-          <button type="button" onClick={handleGoBack}>Go Back</button>
-        </div>
-      )}
-      {hideHeading && (
-        <header>
-          <h1>
-            {categoryName}
-          </h1>
-        </header>
-      )}
-      <ul>
-        {games
-          .filter((game) => game.genre.toLowerCase() === selectedCategory)
-          .slice(0, 6)
-          .map((game) => (
-            <li key={game.id}>
-              {game.genre}
-              {' '}
-              ---
-              {' '}
-              {game.title}
-            </li>
-          ))}
-      </ul>
+      <Header
+        categoryName={selectedCategory}
+        handleGoBack={selectedCategory ? handleGoBack : null}
+      />
+      {!selectedCategory && <Categories handleCategoryChange={handleCategoryChange} />}
+      {selectedCategory && <GameList games={games} selectedCategory={selectedCategory} />}
     </>
   );
 };
