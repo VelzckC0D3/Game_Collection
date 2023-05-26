@@ -36,6 +36,11 @@ const CategoryButtons = ({ category, handleCategoryChange }) => {
 
     let displayedGameCount = genreCounts[category.toLowerCase()] || 0;
 
+    // Filter the games based on the word "card"
+    if (category.toLowerCase() === 'card') {
+      displayedGameCount = games.filter((game) => game.genre.toLowerCase().includes('card')).length;
+    }
+
     // Adjust the displayed count for specific categories
     if (category.toLowerCase() === 'strategy') {
       displayedGameCount = Math.min(displayedGameCount, 49);
@@ -65,7 +70,7 @@ const CategoryButtons = ({ category, handleCategoryChange }) => {
           <p className="category">Loading...</p>
         ) : (
           <p className="category">
-            {category}
+            {category === 'card' ? 'Card Game' : category}
             {' '}
             (
             {gameCount}

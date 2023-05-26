@@ -10,6 +10,8 @@ import sportsImage from '../assets/img/sports.webp';
 import racingImage from '../assets/img/racing.webp';
 import mobaImage from '../assets/img/moba.webp';
 import mmoImage from '../assets/img/mmo.webp';
+import cardImage from '../assets/img/card_game.webp';
+import socialImage from '../assets/img/social.webp';
 
 const GameList = ({ games, selectedCategory }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -21,7 +23,7 @@ const GameList = ({ games, selectedCategory }) => {
 
       if (selectedCategory.toLowerCase() !== 'all') {
         filteredData = games.filter(
-          (game) => game.genre.toLowerCase() === selectedCategory.toLowerCase(),
+          (game) => game.genre.toLowerCase().includes(selectedCategory.toLowerCase()),
         );
 
         // Apply the limit based on the selected category
@@ -38,7 +40,7 @@ const GameList = ({ games, selectedCategory }) => {
 
       // Filter the games based on search query
       const filteredBySearch = filteredData.filter(
-        (game) => game.genre.toLowerCase() === selectedCategory.toLowerCase()
+        (game) => (game.genre.toLowerCase().includes(selectedCategory.toLowerCase()) || selectedCategory.toLowerCase() === 'card')
           && (game.genre.toLowerCase().includes(searchQuery.toLowerCase())
             || game.title.toLowerCase().includes(searchQuery.toLowerCase())),
       );
@@ -84,6 +86,8 @@ const GameList = ({ games, selectedCategory }) => {
     racing: racingImage,
     moba: mobaImage,
     mmo: mmoImage,
+    card: cardImage,
+    social: socialImage,
   };
 
   return (
@@ -124,9 +128,14 @@ const GameList = ({ games, selectedCategory }) => {
             <div className="gameInfo">
               <h3 className="gameTitle">{game.title}</h3>
               <p className="gameDeveloper">
-                developed by:
-                <br />
+                Developer:
+                {' '}
                 {game.developer}
+              </p>
+              <p className="gameRelease">
+                Release Date:
+                {' '}
+                {game.release_date}
               </p>
               <a className="gameBtn" href={game.game_url} target="_blank" rel="noopener noreferrer">
                 Learn More

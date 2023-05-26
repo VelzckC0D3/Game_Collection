@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import CategoryButtons from './CategoryButtons';
 import '../style/Home.css';
 
-const Categories = ({ handleCategoryChange }) => {
-  const filteredCategories = ['shooter', 'strategy', 'fighting', 'mmorpg', 'sports', 'racing', 'moba', 'mmo', 'card game'];
+const Home = ({ handleCategoryChange }) => {
+  const filteredCategories = ['shooter', 'strategy', 'fighting', 'mmorpg', 'sports', 'racing', 'moba', 'mmo', 'card', 'social'];
   const categoryNumber = filteredCategories.length;
 
   return (
@@ -35,8 +35,8 @@ const Categories = ({ handleCategoryChange }) => {
   );
 };
 
-Categories.propTypes = {
+Home.propTypes = {
   handleCategoryChange: PropTypes.func.isRequired,
 };
 
-export default Categories;
+export default Home;

@@ -39,6 +39,14 @@
   background-image: url('../assets/img/mmo.webp');
 }
 
+.categoryCont-card {
+  background-image: url('../assets/img/card_game.webp');
+}
+
+.categoryCont-social {
+  background-image: url('../assets/img/social.webp');
+}
+
 .categoryBtn {
   width: 100%;
   height: 100%;

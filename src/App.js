@@ -53,23 +53,23 @@ const App = () => {
 
   if (error) {
     return (
-      React.createElement('p', null, 'Error: ', error)
+      <p>
+        Error:
+        {' '}
+        {error}
+      </p>
     );
   }
 
   return (
-    React.createElement(React.Fragment, null,
-      React.createElement(Header, {
-        categoryName: selectedCategory,
-        handleGoBack: selectedCategory ? handleGoBack : null,
-      }),
-      !selectedCategory && React.createElement(Categories, {
-        handleCategoryChange,
-      }),
-      selectedCategory && React.createElement(GameList, {
-        games,
-        selectedCategory,
-      }))
+    <>
+      <Header
+        categoryName={selectedCategory}
+        handleGoBack={selectedCategory ? handleGoBack : null}
+      />
+      {!selectedCategory && <Categories handleCategoryChange={handleCategoryChange} />}
+      {selectedCategory && <GameList games={games} selectedCategory={selectedCategory} />}
+    </>
   );
 };
 

@@ -128,13 +128,13 @@
 }
 
 .gameTitle {
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 .gameInfo {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: flex-start;
   box-sizing: border-box;
   height: 8.5rem;
@@ -147,7 +147,8 @@
 }
 
 .gameTitle,
-.gameDeveloper {
+.gameDeveloper,
+.gameRelease {
   margin-left: 0.1rem;
 }
 
