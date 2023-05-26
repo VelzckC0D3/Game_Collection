@@ -14,6 +14,7 @@ const CategoryButtons = ({ category, handleCategoryChange }) => {
       try {
         await dispatch(fetchGames());
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error(error);
       }
     };
