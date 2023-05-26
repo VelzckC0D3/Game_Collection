@@ -35,7 +35,17 @@ const CategoryButtons = ({ category, handleCategoryChange }) => {
 
   return (
     <div className={`categoryCont categoryCont-${category.toLowerCase()}`}>
-      <button className="categoryBtn" type="button" onClick={() => handleCategoryChange(category)}>
+      <button
+        className="categoryBtn"
+        type="button"
+        onClick={() => {
+          handleCategoryChange(category);
+          const topElement = document.getElementById('headerCont'); // Add an ID to an element at the top of the page
+          if (topElement) {
+            topElement.scrollIntoView();
+          }
+        }}
+      >
         <p className="category">
           {category}
           {' '}
@@ -44,6 +54,7 @@ const CategoryButtons = ({ category, handleCategoryChange }) => {
           )
         </p>
       </button>
+
     </div>
   );
 };

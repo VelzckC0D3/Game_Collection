@@ -13,7 +13,7 @@ const Header = ({ categoryName, handleGoBack }) => {
   }, [categoryName]);
 
   return (
-    <header className="headerCont">
+    <header id="headerCont" className="headerCont">
       <div className="headerIcons">
         <GoGear className="headerIcon" />
         <FaMicrophone className="headerIcon" />
