@@ -1,0 +1,61 @@
+.categoryCont {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+}
+
+.categoryCont-shooter {
+  background-image: url('../assets/img/shooter.webp');
+}
+
+.categoryCont-strategy {
+  background-image: url('../assets/img/strategy.webp');
+}
+
+.categoryCont-fighting {
+  background-image: url('../assets/img/fighting.webp');
+}
+
+.categoryCont-mmorpg {
+  background-image: url('../assets/img/mmorpg.webp');
+}
+
+.categoryCont-sports {
+  background-image: url('../assets/img/sports.webp');
+}
+
+.categoryCont-racing {
+  background-image: url('../assets/img/racing.webp');
+}
+
+.categoryCont-moba {
+  background-image: url('../assets/img/moba.webp');
+}
+
+.categoryCont-mmo {
+  background-image: url('../assets/img/mmo.webp');
+}
+
+.categoryBtn {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 23, 153, 0.237);
+  border: none;
+  color: white;
+  font-size: 1.3rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.category {
+  background-color: rgba(15, 43, 129, 0.671);
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+  text-transform: capitalize;
+  border-radius: 7px;
+  backdrop-filter: blur(5px);
+}
