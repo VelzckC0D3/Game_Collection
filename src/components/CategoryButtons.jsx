@@ -8,6 +8,7 @@ const CategoryButtons = ({ category, handleCategoryChange }) => {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.game.games);
   const [gameCount, setGameCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchCategoryCount = async () => {
@@ -19,7 +20,12 @@ const CategoryButtons = ({ category, handleCategoryChange }) => {
       }
     };
 
-    fetchCategoryCount();
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+      fetchCategoryCount();
+    }, 100); // Display loading state for 100ms
+
+    return () => clearTimeout(timer); // Clean up the timer on component unmount
   }, [dispatch]);
 
   useEffect(() => {
@@ -28,10 +34,19 @@ const CategoryButtons = ({ category, handleCategoryChange }) => {
       return { ...counts, [genre]: (counts[genre] || 0) + 1 };
     }, {});
 
-    setGameCount(genreCounts[category.toLowerCase()] || 0);
-  }, [category, games]);
+    let displayedGameCount = genreCounts[category.toLowerCase()] || 0;
 
-  const displayedGameCount = Math.min(gameCount);
+    // Adjust the displayed count for specific categories
+    if (category.toLowerCase() === 'strategy') {
+      displayedGameCount = Math.min(displayedGameCount, 49);
+    } else if (category.toLowerCase() === 'mmorpg') {
+      displayedGameCount = Math.min(displayedGameCount, 149);
+    } else if (category.toLowerCase() === 'sports') {
+      displayedGameCount = Math.min(displayedGameCount, 8);
+    }
+
+    setGameCount(displayedGameCount);
+  }, [category, games]);
 
   return (
     <div className={`categoryCont categoryCont-${category.toLowerCase()}`}>
@@ -40,21 +55,24 @@ const CategoryButtons = ({ category, handleCategoryChange }) => {
         type="button"
         onClick={() => {
           handleCategoryChange(category);
-          const topElement = document.getElementById('headerCont'); // Add an ID to an element at the top of the page
+          const topElement = document.getElementById('headerCont');
           if (topElement) {
             topElement.scrollIntoView();
           }
         }}
       >
-        <p className="category">
-          {category}
-          {' '}
-          (
-          {displayedGameCount}
-          )
-        </p>
+        {isLoading ? (
+          <p className="category">Loading...</p>
+        ) : (
+          <p className="category">
+            {category}
+            {' '}
+            (
+            {gameCount}
+            )
+          </p>
+        )}
       </button>
-
     </div>
   );
 };
