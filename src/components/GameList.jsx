@@ -75,8 +75,9 @@ const GameList = ({ games, selectedCategory }) => {
       'Collaborate with teammates, employ strategic teamwork, and engage in fast-paced, competitive multiplayer battles in dynamic arenas.',
     mmo:
       'Immerse yourself in vast online servers, team up with fellows, and embark on epic battles, it could be competitive or cooperative, it is up to you!',
+    card:
+      'Engage in strategic card battles, deploy powerful cards, and outwit your opponents with clever tactics and calculated moves.',
   };
-
   const categoryBackgrounds = {
     shooter: shooterImage,
     strategy: strategyImage,

@@ -14,10 +14,8 @@ const CategoryButtons = ({ category, handleCategoryChange }) => {
     const fetchCategoryCount = async () => {
       try {
         await dispatch(fetchGames());
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.error(error);
-      }
+      // eslint-disable-next-line no-empty
+      } catch (error) {}
     };
 
     const timer = setTimeout(() => {
@@ -54,7 +52,7 @@ const CategoryButtons = ({ category, handleCategoryChange }) => {
   }, [category, games]);
 
   return (
-    <div className={`categoryCont categoryCont-${category.toLowerCase()}`}>
+    <div className={`categoryCont categoryCont-${category.toLowerCase()}`} data-testid="categories-cont">
       <button
         className="categoryBtn"
         type="button"

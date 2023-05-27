@@ -9,14 +9,15 @@ const Header = ({ categoryName, handleGoBack }) => {
   const [title, setTitle] = useState('');
 
   useEffect(() => {
-    setTitle(categoryName || 'Game Collection');
+    setTitle(categoryName === 'card' ? 'Card Game' : categoryName || 'Game Collection');
   }, [categoryName]);
 
   return (
     <header id="headerCont" className="headerCont">
       <div className="headerIcons">
-        <GoGear className="headerIcon" />
-        <FaMicrophone className="headerIcon" />
+        <GoGear className="headerIcon" data-testid="gear-icon" />
+        <FaMicrophone className="headerIcon" data-testid="microphone-icon" />
+
       </div>
       <p className="headerTitle">
         {title}
