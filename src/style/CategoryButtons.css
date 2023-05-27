@@ -72,4 +72,5 @@
   backdrop-filter: blur(5px);
   box-shadow: -1px 9px 13px 0 rgba(0, 0, 0, 0.4);
   border: 2px solid rgba(40, 47, 142, 0.435);
+  cursor: pointer;
 }

@@ -107,7 +107,7 @@ const GameList = ({ games, selectedCategory }) => {
             <input
               className="searchGame"
               type="text"
-              placeholder="Search..."
+              placeholder="Search"
               value={searchQuery}
               onChange={handleSearchChange}
             />
@@ -121,25 +121,32 @@ const GameList = ({ games, selectedCategory }) => {
 
       <ul className="gamesUl">
         {filteredGames.map((game) => (
-          <li className="game" key={game.id}>
-            <div className="gameImgCont">
-              <img src={game.thumbnail} alt="" className="gameImg" />
-            </div>
-            <div className="gameInfo">
-              <h3 className="gameTitle">{game.title}</h3>
-              <p className="gameDeveloper">
-                Developer:
-                {' '}
-                {game.developer}
-              </p>
-              <p className="gameRelease">
-                Release Date:
-                {' '}
-                {game.release_date}
-              </p>
-              <a className="gameBtn" href={game.game_url} target="_blank" rel="noopener noreferrer">
-                Learn More
+          <li className="gameCont" key={game.id}>
+            <div className="game">
+              <a className="gameLink" href={game.game_url} target="_blank" rel="noopener noreferrer" style={{ backgroundImage: `url(${game.thumbnail})` }}>
+                <div className="gameImgCont" />
+                <p className="gameBtn">
+                  Play Now
+                </p>
               </a>
+              <div className="gameInfo">
+                <h3 className="gameTitle">{game.title}</h3>
+                <p className="gameDeveloper">
+                  By:
+                  {' '}
+                  {game.developer}
+                </p>
+                <p className="gameRelease">
+                  Release Date:
+                  {' '}
+                  {game.release_date}
+                </p>
+                <p className="gamePlatform">
+                  Platform:
+                  {' '}
+                  {game.platform}
+                </p>
+              </div>
             </div>
           </li>
         ))}

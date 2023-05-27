@@ -34,10 +34,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(14, 36, 91, 0.801);
+  background-color: rgba(11, 36, 85, 0.767);
   color: white;
   padding: 0.6rem;
-  gap: 1rem;
   width: 100%;
   box-sizing: border-box;
   justify-self: flex-end !important;
@@ -52,23 +51,29 @@
   cursor: pointer;
   text-decoration: none;
   padding: 0.2rem 0.5rem;
+  width: 4rem;
+  transition: all 500ms ease-in-out;
 }
 
 .searchGame::placeholder {
   color: rgb(0, 0, 0);
+  transition: all 500ms ease-in-out;
 }
 
 .searchGame:focus::placeholder {
   color: transparent;
+  transition: all 100ms ease-in-out;
 }
 
 .searchGame:focus {
   outline: none;
+  width: 10rem;
 }
 
 .searchIcon {
   color: black;
-  transform: translateX(-2.2rem);
+  transform: translateX(-1.2rem);
+  pointer-events: none;
 }
 
 .searchInput {
@@ -87,44 +92,94 @@
 
 .gamesUl {
   list-style: none;
-  background-color: black;
+  background-color: #8b8b8b;
+  background-image: url("../assets/img/bgg.webp");
+  background-position: left;
   color: white;
+  background-size: 100rem;
+}
+
+.gameCont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.5rem;
+  border-bottom: 3px solid rgba(71, 79, 195, 0);
+  border-top: 3px solid rgba(71, 79, 195, 0);
+  background-color: rgb(95 80 255 / 50%);
 }
 
 .game {
+  border-radius: 25px 0;
+  border-left: 3px solid rgb(0, 0, 0);
+  border-bottom: 3px solid rgb(0, 0, 0);
+  margin-right: 3px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 0;
+  overflow: hidden;
+  box-shadow: 6px -6px 12px 0 rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  background:
+    linear-gradient(
+      0deg,
+      rgba(2, 0, 36, 0.792) 0%,
+      rgba(9, 9, 121, 0.55) 30%,
+      rgba(7, 72, 163, 0.269) 66%,
+      rgba(5, 112, 188, 0.16) 88%,
+      rgba(4, 139, 207, 0) 100%
+    );
 }
 
-.game:nth-child(odd) {
-  background-color: rgb(14, 36, 91);
-}
-
-.game:nth-child(even) {
-  background-color: rgb(47, 54, 150);
+.gameLink {
+  text-decoration: none;
+  background-size: 15rem;
+  background-repeat: no-repeat;
+  background-position: top;
 }
 
 .gameImgCont {
-  margin: 0.3rem;
+  width: 10rem;
+  height: 8rem;
   display: flex;
   justify-content: center;
-  align-items: center;
-  border-radius: 25px 0 25px 0;
-  border: 1px solid rgb(219, 233, 255);
+  align-items: flex-end;
+  box-shadow: inset 0 -42px 73px 5px rgba(0, 0, 0, 0.75);
+
+  /*   background: linear-gradient(
+    0deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 0.55) 30%,
+    rgba(7, 72, 163, 0.5) 66%,
+    rgba(5, 111, 188, 0.3) 88%,
+    rgba(4, 139, 207, 0) 100%
+  ); */
+  background-color: rgba(0, 0, 255, 0.236);
+  transition: all 500ms ease-in-out;
 }
 
-.gameImg {
-  max-width: 9rem;
-  min-width: 9rem;
-  max-height: 8rem;
-  min-height: 8rem;
-  object-fit: cover;
-  border-radius: 25px 0 25px 0;
-  opacity: 0.8;
+.gameLink:hover .gameImgCont {
+  background-color: transparent;
+  box-shadow: inset 5px -11px 17px 0 rgba(0, 0, 0, 0);
+  transition: all 300ms ease-in-out;
+}
+
+.gameBtn {
+  background-color: rgb(0, 0, 0);
+  backdrop-filter: blur(3px);
   box-sizing: border-box;
-  padding: 0;
+  padding: 0.4rem 2.5rem;
+  color: white;
+  width: 100%;
+  text-decoration: none;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  transition: all 500ms ease-in-out;
+}
+
+.gameLink:hover .gameBtn {
+  background-color: white;
+  color: black;
+  transition: all 300ms ease-in-out;
 }
 
 .gameTitle {
@@ -135,14 +190,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: flex-start;
+  align-items: center;
+  text-align: center;
   box-sizing: border-box;
-  height: 8.5rem;
+  height: 10rem;
   width: 56vw;
-  gap: 0.5rem;
   background-color: rgba(0, 0, 0, 0.368);
-  border-radius: 10px;
-  margin: 0.5rem;
   padding: 0.5rem;
 }
 
@@ -150,16 +203,4 @@
 .gameDeveloper,
 .gameRelease {
   margin-left: 0.1rem;
-}
-
-.gameBtn {
-  background-color: rgb(0, 21, 52);
-  color: rgb(216, 216, 222);
-  -webkit-text-stroke: 0.5px;
-  border: 1px solid white;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  text-decoration: none;
-  padding: 0.2rem 0.5rem;
 }

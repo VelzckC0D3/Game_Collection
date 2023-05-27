@@ -4,11 +4,11 @@ import CategoryButtons from './CategoryButtons';
 import '../style/Home.css';
 
 const Home = ({ handleCategoryChange }) => {
-  const filteredCategories = ['shooter', 'strategy', 'fighting', 'mmorpg', 'sports', 'racing', 'moba', 'mmo', 'card', 'social'];
+  const filteredCategories = ['shooter', 'strategy', 'card', 'fighting', 'mmorpg', 'moba', 'racing', 'mmo', 'sports', 'social'];
   const categoryNumber = filteredCategories.length;
 
   return (
-    <div className="categoriesCont">
+    <div className="categoriesCont" data-testid="home-1">
       <div className="heroCont">
         <div className="hero">
           <h2 className="heroTitle">Discover Endless Joy through Gaming!</h2>
