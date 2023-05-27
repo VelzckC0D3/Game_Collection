@@ -26,6 +26,8 @@
 
 # 📖 [Velzck's Game Collection] `ES6` `React` `Redux` `API` <a name="about-project"></a>
 
+![mocap](https://github.com/VelzckC0D3/react-redux-capstone/assets/92229666/146e70e6-765c-49c8-bbed-c1301a461338)
+
 Game Collection is an immersive React Redux application that leverages the FreeToGame API from RapidAPI. It empowers users to seamlessly filter games by categories, while also enabling intuitive data exploration. Through the implementation of async thunks and reducers, this project ensures efficient data retrieval and management, while offering the added functionality of search capabilities within the game collection.
 
 The application is thoroughly tested using the React Testing Library in conjunction with Jest for testing of React components.
