@@ -179,6 +179,7 @@ If you like this project, be pending on my profile since I'll be doing much more
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 **Thanks to [Nelson Sakwa](https://www.behance.net/sakwadesignstudio):** who allowed the comunity to use his designs
+</br>
 Also, I would like to thanks my Microverse Team and partners for helping me to get this done.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
