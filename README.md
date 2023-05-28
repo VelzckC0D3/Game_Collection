@@ -72,7 +72,6 @@ The application is thoroughly tested using the React Testing Library in conjunct
 <!-- LIVE DEMO -->
 
 ## 🚀 Live Demo & preview <a name="live-demo"></a>
-[https://www.loom.com/share/a4ab5ce8115e408fb954b92ddd5d4578](https://www.loom.com/share/a4ab5ce8115e408fb954b92ddd5d4578)
 
 ![Game Collection Preview)](https://github.com/VelzckC0D3/react-redux-capstone/assets/92229666/c1cf1513-1a98-4662-86da-a5f341914bcb)
 
