@@ -46,6 +46,8 @@ const CategoryButtons = ({ category, handleCategoryChange }) => {
       displayedGameCount = Math.min(displayedGameCount, 149);
     } else if (category.toLowerCase() === 'sports') {
       displayedGameCount = Math.min(displayedGameCount, 8);
+    } else if (category.toLowerCase() === 'mmo') {
+      displayedGameCount = Math.max(displayedGameCount, 154);
     }
 
     setGameCount(displayedGameCount);
