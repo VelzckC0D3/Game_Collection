@@ -6,7 +6,6 @@ import '../style/Home.css';
 
 const Home = ({ handleCategoryChange }) => {
   const filteredCategories = ['shooter', 'strategy', 'card', 'fighting', 'mmorpg', 'moba', 'racing', 'mmo', 'sports', 'social'];
-  const categoryNumber = filteredCategories.length;
 
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -37,7 +36,7 @@ const Home = ({ handleCategoryChange }) => {
             />
             <AiOutlineSearch className="searchIcon" />
             <p className="currentGame">
-              {`(${categoryNumber})`}
+              {`(${filteredCategoriesBySearch.length})`}
               {' '}
               Categories Found
             </p>
