@@ -1,5 +1,7 @@
 <a name="readme-top"></a>
-![onlyText](https://user-images.githubusercontent.com/92229666/221316081-fb9e0b88-a571-4414-baa7-76d8d411c181.gif)
+<div align="center">
+  <img src="https://github.com/VelzckC0D3/SQL_Database/assets/92229666/64c8d8a7-b625-4a25-847a-ea02e00df2f4" alt="Sin título-1">
+</div>
 <!-- TABLE OF CONTENTS -->
 
 # 📗 Table of Contents
@@ -26,7 +28,10 @@
 
 # 📖 [Velzck's Game Collection] `ES6` `React` `Redux` `API` <a name="about-project"></a>
 
+<div align="center">
+  
 ![mocap](https://github.com/VelzckC0D3/react-redux-capstone/assets/92229666/146e70e6-765c-49c8-bbed-c1301a461338)
+</div>
 
 Game Collection is an immersive React Redux application that leverages the FreeToGame API from RapidAPI. It empowers users to seamlessly filter games by categories, while also enabling intuitive data exploration. Through the implementation of async thunks and reducers, this project ensures efficient data retrieval and management, while offering the added functionality of search capabilities within the game collection.
 
@@ -73,8 +78,10 @@ The application is thoroughly tested using the React Testing Library in conjunct
 
 ## 🚀 Live Demo & preview <a name="live-demo"></a>
 
-![Game Collection Preview)](https://github.com/VelzckC0D3/react-redux-capstone/assets/92229666/c1cf1513-1a98-4662-86da-a5f341914bcb)
+<div align="center">
 
+![Game Collection Preview)](https://github.com/VelzckC0D3/react-redux-capstone/assets/92229666/c1cf1513-1a98-4662-86da-a5f341914bcb)
+</div>
 
 - _You can visit the live demo [here](https://velzck-collection.netlify.app/)_
  
